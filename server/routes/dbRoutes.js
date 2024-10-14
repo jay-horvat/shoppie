@@ -43,6 +43,7 @@ router.post("/login", async (req, res) => {
     const connection = await db.getConnection();
     const [rows] = await connection.query("SELECT * FROM userTable WHERE user = ?", [user]);
 
+
     connection.release();
 
     if (rows.length === 0) {
@@ -53,8 +54,9 @@ router.post("/login", async (req, res) => {
       if (await bcrypt.compare(password, hashedPassword)) {
         //Do I add the JWT variable here?
         const token = jwt.sign({ userId: rows[0].userId }, JWT_SECRET, { expiresIn: '1h' });
+        const username = rows[0].user;
         console.log(`${user} is logged in.`);
-        return res.json({ message: `${user} is logged in!`, token });  // Login successful and return the token 
+        return res.json({ message: `${user} is logged in!`, token, username });  // Login successful and return the token and user
       } else {
         console.log(`Wrong password`);
         res.send("Password incorrect!");

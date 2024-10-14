@@ -6,6 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import Products from './Products';
 import Logout from './Components/Logout';
+import ShowUser from './Components/ShowUser';
 import './App.css';
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/products">Products</Link></li>
               <li><Logout /></li>
+              <li><ShowUser /></li>
             </ul>
           </nav>
         </header>

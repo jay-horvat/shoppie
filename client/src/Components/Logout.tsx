@@ -7,6 +7,7 @@ const Logout: React.FC = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         navigate('/');
     }
 

@@ -16,7 +16,7 @@ if (result.success) {
   try{
     const db = req.app.locals.db;
     const connection = await db.getConnection();
-    const [rows] = await connection.query("SELECT * FROM productPriceInfo WHERE product_url = ?", [url]);
+    const [rows] = await connection.query("SELECT * FROM productPriceInfo WHERE product_url = ? AND userId = ?", [url, userId]);
 
     if (rows.length > 0) {
       console.log(`Product already exists in user's saved products list`);

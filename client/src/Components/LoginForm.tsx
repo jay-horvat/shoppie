@@ -24,6 +24,8 @@ const LoginForm: React.FC = () => {
       setMessage(response.data.message);
       //Store the JWT toekn produced
       localStorage.setItem('token', response.data.token);
+      //set User
+      localStorage.setItem('user', response.data.username);
 
     } catch (error) {
       // Handle error
