@@ -33,7 +33,7 @@ const AddProduct: React.FC = () => {
 
     try {
       // Send a POST request to the backend
-      const response: AxiosResponse<{ productName: string; productPrice: string }> = await axios.post('http://localhost:5001/addproduct', {
+      const response: AxiosResponse<{ productName: string; productPrice: string; message: string }> = await axios.post('http://localhost:5001/addproduct', {
         productURL,
         userId: tokenUserID,
         priceLimit: parseFloat(priceLimit),
@@ -42,7 +42,7 @@ const AddProduct: React.FC = () => {
       // Handle successful response
       // Set the response data (productName and productPrice) in the state
       setProductData(response.data);
-      setError(null);  // Clear error if any
+      setError(response.data.message);  // Clear error if any
       console.log('Success:', response.data);
     } catch (error) {
       // Handle error

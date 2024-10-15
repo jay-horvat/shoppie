@@ -21,7 +21,7 @@ if (result.success) {
     if (rows.length > 0) {
       console.log(`Product already exists in user's saved products list`);
       connection.release();
-      return res.status(409).send(`${result.productName} is already in the saved list`);
+      return res.json({ message: "That item is already in your saved products!" });
     } else {
       const formattedPrice = result.productPrice.replace(/[^0-9.]/g, '');
       const now = new Date();

@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
         return res.json({ message: `${user} is logged in!`, token, username });  // Login successful and return the token and user
       } else {
         console.log(`Wrong password`);
-        res.send("Password incorrect!");
+        return res.json({ message: "Wrong password" });
       }
     }
   } catch (err) {
