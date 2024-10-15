@@ -13,6 +13,9 @@ var priceRoute = require('./routes/priceFetcher');
 var addProductRoute = require('./routes/addProduct');
 var addWallmartProductRoute = require('./routes/addWallmartProduct');
 
+// Import the scraping function
+const startScraping = require('./controllers/continuousScraper');
+
 var app = express();
 
 const mysql = require("mysql2/promise");
@@ -69,6 +72,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Start the scraping process when the server starts
+startScraping(db); 
 
 // Start the server
 const port = process.env.PORT || 5001;
