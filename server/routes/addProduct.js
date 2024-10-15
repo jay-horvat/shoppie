@@ -28,10 +28,10 @@ if (result.success) {
       const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
 
       await connection.query("INSERT INTO productPriceInfo (product_name, product_price, date_scraped, product_url, product_price_limit, userId) VALUES (?, ?, ?, ?, ?, ?)", [result.productName, formattedPrice, formattedDate, url, priceLimit, userId]);
+      connection.release();
       console.log(`${result.productName} added to your saved products.`);
+      return res.json({ message: "Saved the iterm!" });
     }
-
-    connection.release();
   } catch (err) {
     console.error(err);
     res.status(500).send("Internal Server Error");
