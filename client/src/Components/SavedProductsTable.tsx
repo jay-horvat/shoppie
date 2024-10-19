@@ -11,12 +11,17 @@ const SavedProductsTable: React.FC = () => {
         loggedIn = true;
     }
 
+    //if (loggedIn)
+        //access products table for this user and return json data
 
+        //Iterate through data and present in table. Have table be function to 
+        //conditionally show below
 
     return (
         <>
             {loggedIn ? (
                 <h1>I guess you're logged in</h1>
+                //show the function that creates the table
             ) : (
                 <h1>I guess youre not logged in</h1>
             )}
