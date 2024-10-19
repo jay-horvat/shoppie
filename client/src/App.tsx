@@ -7,6 +7,7 @@ import Register from './Register';
 import Products from './Products';
 import Logout from './Components/Logout';
 import ShowUser from './Components/ShowUser';
+import SavedProducts from './SavedProducts';
 import './App.css';
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/products">Products</Link></li>
+              <li><Link to="/savedproducts">Saved Products</Link></li>
               <li><Logout /></li>
               <li><ShowUser /></li>
             </ul>
@@ -31,6 +33,7 @@ const App: React.FC = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/savedproducts" element={<SavedProducts />} />
           </Routes>
         </main>
         <Footer />
