@@ -22,6 +22,11 @@ async function urlChecker(url) {
             referer = 'https://www.walmart.com/';
             productNameLocation = 'section.mh3 h1';
             productPriceLocation = '[data-testid="price-wrap"] span[itemprop="price"]';
+        } else if (cleanedUrl.includes("uniqlo")) {
+            success = true;
+            referer = 'https://www.uniqlo.com/';
+            productNameLocation = '[data-test="product-detail-summary"] [data-test="product-name"] span.title';
+            productPriceLocation = '[data-test="product-detail-summary"] [data-test="price"] span.fr-price-currency.xN1x05O0jJUkQaFHARtFH .fr-no-uppercase + span';
         }
 
     return {
