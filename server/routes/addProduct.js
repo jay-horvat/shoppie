@@ -9,9 +9,10 @@ router.post('/addproduct', async (req, res) => {
     const userId = req.body.userId;
     const priceLimit = req.body.priceLimit;
 
-//Use scraper
+//Use scraper on url provided
 const result = await productScraper(url);
 
+// add product information to database
 if (result.success) {
   try{
     const db = req.app.locals.db;
@@ -38,8 +39,8 @@ if (result.success) {
   }
 
 } else {
-  res.status(500).json(result);  // Handle error
+  res.status(500).json(result); 
 }
 });
 
-module.exports = router;  // Export the router
+module.exports = router;  
