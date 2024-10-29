@@ -1,5 +1,9 @@
 # Shoppie
 ![Shoppie Logo](./client/src/assets/images/ShoppieLogov1.png)
+<p align="center">
+  <img src="./client/src/assets/images/ShoppieLogov1.png" alt="Description" width="300" height="auto">
+</p>
+
 
 Shoppie is an ecommerce software that can be used to track the proces of products online and then send alerts to user when a certain price limit has been reached. Shoppie is built using React and TypeScript for the front end and Node.js, Express and JavaScript for the backend. MySQL has been used for database management and axios and puppeteer libraries have been leveraged for API formation and web scraping, respectively.
 
