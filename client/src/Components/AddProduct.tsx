@@ -3,18 +3,18 @@ import axios, { AxiosResponse } from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
 
-// ProductFetcher Component
+// AddProduct Component
 const AddProduct: React.FC = () => {
   const [productURL, setProductURL] = useState('');
-  const [productData, setProductData] = useState<{ productName: string; productPrice: string } | null>(null);  // To store the response data
-  const [error, setError] = useState<string | null>(null);  // To store errors
+  const [productData, setProductData] = useState<{ productName: string; productPrice: string } | null>(null);  
+  const [error, setError] = useState<string | null>(null);  
   const [tokenUserID, setTokenUserID] = useState<string | null>(null); 
   const [priceLimit, setPriceLimit] = useState('');
 
   interface DecodedToken {
-    userId: string;   // or number, depending on how you store it in your DB
-    iat: number;      // Issued at timestamp
-    exp: number;      // Expiration timestamp
+    userId: string;   
+    iat: number;      
+    exp: number;      
   }
   
 
@@ -23,7 +23,7 @@ const AddProduct: React.FC = () => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       const decoded = jwtDecode<DecodedToken>(storedToken); 
-      setTokenUserID(decoded.userId);  // Update state, which triggers a re-render if necessary
+      setTokenUserID(decoded.userId);  
     }
   }, []);
 
@@ -42,13 +42,12 @@ const AddProduct: React.FC = () => {
       // Handle successful response
       // Set the response data (productName and productPrice) in the state
       setProductData(response.data);
-      setError(response.data.message);  // Clear error if any
+      setError(response.data.message); 
       console.log('Success:', response.data);
     } catch (error) {
-      // Handle error
       console.error('Error:', error);
       setError('Failed to fetch product data');
-      setProductData(null);  // Clear product data on error
+      setProductData(null); 
     }
   };
 
@@ -73,8 +72,8 @@ const AddProduct: React.FC = () => {
             value={priceLimit}
             onChange={(e) => setPriceLimit(e.target.value)}
             required
-            step="0.01"  // Allows decimal input
-            min="0"  // Ensure price limit is non-negative
+            step="0.01"  
+            min="0"  
           />
         </label>
         <br />

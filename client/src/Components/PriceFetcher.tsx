@@ -15,7 +15,7 @@ const ProductFetcher: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch product data from the server-side API
+    // Fetch product data from the product table
     axios.get('http://localhost:5001/api/product')
       .then((response: AxiosResponse<ProductInfo>) => {
         setProductInfo(response.data);
