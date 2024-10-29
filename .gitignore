@@ -11,3 +11,4 @@ yarn-error.log*
 
 #Confidential 
 server/controllers/
+server/routes/productDbServer.js
