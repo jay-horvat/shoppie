@@ -40,5 +40,5 @@ The back end of Shoppie is developed using **Node.js**, **Express**, and **JavaS
 Through this setup, any front-end interaction with the user or product data triggers corresponding RESTful API calls. These calls interact with the database to keep user and product details accurate and up-to-date, ensuring a cohesive experience across the application.
 
 ## Contact
-Please feel free to contact me at jaydhorvat@gmail.com or visit [my portfolio website](https://jay-horvat.github.io/) for more information on my background, education and experience and for other means of contact: 
+Please feel free to contact me at jaydhorvat@gmail.com or visit [my portfolio website](https://jay-horvat.github.io/) for more information on my background, education, experience and for other means of contact. 
 
