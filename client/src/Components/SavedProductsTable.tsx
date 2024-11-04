@@ -48,16 +48,28 @@ const SavedProductsTable: React.FC = () => {
                 <>
                 <h1>I guess you're logged in</h1>
                 {productData.length > 0 ? (
-                    <ul>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Product URL</th>
+                                <th>Price Limit Set</th>
+                                <th>edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         {productData.map((product, index) => (
-                            <li key = {index}>
-                                Product name: {product.product_name}, 
-                                Product price: {product.product_price},
-                                Product url: {product.product_url},
-                                Product price limit set: {product.product_price_limit},
-                            </li>
+                            <tr key = {index}>
+                                <td>{product.product_name}</td> 
+                                <td>{product.product_price}</td>
+                                <td>{product.product_url}</td>
+                                <td>{product.product_price_limit}</td>
+                                <td>EDIT</td>
+                            </tr>
                         ))}
-                    </ul>
+                        </tbody>
+                    </table>
                 ) : (
                     <h1>No products</h1>
                 )}
