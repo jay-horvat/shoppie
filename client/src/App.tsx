@@ -8,15 +8,15 @@ import Products from './Products';
 import Logout from './Components/Logout';
 import ShowUser from './Components/ShowUser';
 import SavedProducts from './SavedProducts';
-import './App.css';
+
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav>
-            <ul>
+      <div>
+        <header>
+          <nav className = "bg-gray-800">
+            <ul className="flex text-white justify-between items-center px-5 mx-20">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
@@ -27,7 +27,7 @@ const App: React.FC = () => {
             </ul>
           </nav>
         </header>
-        <main className="App-main">
+        <main className="flex bg-violet-50 justify-center">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

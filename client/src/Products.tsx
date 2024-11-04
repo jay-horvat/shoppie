@@ -4,8 +4,8 @@ import AddProduct from './Components/AddProduct';
 
 const Products: React.FC = () => {
   return (
-    <div>
-      <h1>Product Information:</h1>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold text-blue-600 mb-6">Track a new product.</h1>
       <AddProduct/>
     </div>
   );

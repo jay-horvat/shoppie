@@ -52,32 +52,36 @@ const AddProduct: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Add Product</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Product URL:
-          <input
-            type="text"
-            value={productURL}
-            onChange={(e) => setProductURL(e.target.value)}
-            required
-          />
-        </label>
+    <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold text-center text-blue-600 mb-6">Add Product</h2>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div>
+          <label className="block text-gray-700">
+            Product URL:
+            <input className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+              type="text"
+              value={productURL}
+              onChange={(e) => setProductURL(e.target.value)}
+              required
+            />
+          </label>
+        </div>
         <br />
-        <label>
-          Price Limit:
-          <input
-            type="number"
-            value={priceLimit}
-            onChange={(e) => setPriceLimit(e.target.value)}
-            required
-            step="0.01"  
-            min="0"  
-          />
-        </label>
+        <div>
+          <label className="block text-gray-700">
+            Price Limit:
+            <input className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+              type="number"
+              value={priceLimit}
+              onChange={(e) => setPriceLimit(e.target.value)}
+              required
+              step="0.01"  
+              min="0"  
+            />
+          </label>
+        </div>
         <br />
-        <button type="submit">Submit</button>
+        <button className="w-full py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300" type="submit">Submit</button>
       </form>
            {/* Display the product data if available */}
            {productData && (
