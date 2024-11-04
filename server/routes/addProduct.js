@@ -43,4 +43,35 @@ if (result.success) {
 }
 });
 
+  // ARoute for when front end retrieves products data for user
+router.get("/getProducts", async (req, res) => {
+  console.log("Received request to /getProduct"); 
+  const user = req.query.user;
+  console.log(`${user} is getting fetched`)
+
+  try {
+    //Connect to the DB  
+    const db = req.app.locals.db;
+    const connection = await db.getConnection();
+    console.log("Connected to the database"); 
+    const [productRows] = await connection.query("SELECT product_name, product_price, product_url, product_price_limit FROM productPriceInfo WHERE userId = ?", [user]);
+    connection.release();
+    console.log("Executed SELECT query");
+    // Check if the url is already in the table 
+    //return product rows as a json
+    if (productRows.length === 0) {
+      console.log("No products saved");
+      return res.json({message: "You have no products saved", productRows: [] });
+    //Ad product to the table  
+    } else {
+      console.log("User's product table returned.");
+      return res.json({productRows});
+    }
+  
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;  
