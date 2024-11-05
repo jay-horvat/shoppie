@@ -8,22 +8,47 @@ import Products from './Products';
 import Logout from './Components/Logout';
 import ShowUser from './Components/ShowUser';
 import SavedProducts from './SavedProducts';
-
+import logo from './assets/images/ShoppieheaderlogoV1.png';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div>
         <header>
-          <nav className = "bg-gray-800">
-            <ul className="flex text-white justify-between items-center px-5 mx-20">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              <li><Link to="/products">Products</Link></li>
-              <li><Link to="/savedproducts">Saved Products</Link></li>
-              <li><Logout /></li>
-              <li><ShowUser /></li>
+          <nav  className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 shadow-lg">
+            <ul className="flex text-white">
+              <div>
+                <li>
+                  <Link to="/">
+                    <img src={logo} alt="Logo" className="w-16 h-16" />
+                  </Link>
+                </li>
+              </div>
+              <div className="flex text-white items-center px-4 py-2 mx-auto space-x-6">
+                <li><Link to="/" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Home</Link></li>
+                <li><Link to="/login" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Login</Link></li>
+                <li><Link to="/register" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Register</Link></li>
+                <li><Link to="/products" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Products</Link></li>
+                <li><Link to="/savedproducts" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Saved Products</Link></li>
+                {/* Account Dropdown */}
+                <li className="relative group">
+                  <button className="text-lg font-semibold hover:text-gray-200 transition duration-200">
+                    Account
+                  </button>
+                  <ul className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
+                    <li>
+                      <Link to="/" className="block px-4 py-2 hover:bg-gray-100">
+                        <Logout />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <ShowUser />
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              </div>
             </ul>
           </nav>
         </header>
