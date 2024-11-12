@@ -8,14 +8,15 @@ import Products from './Products';
 import Logout from './Components/Logout';
 import ShowUser from './Components/ShowUser';
 import SavedProducts from './SavedProducts';
-import logo from './assets/images/ShoppieheaderlogoV1.png';
+import logo from './assets/images/ShoppieLogov1.png';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div>
         <header>
-          <nav  className="bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-600 shadow-lg">
+          <nav  className="bg-gradient-to-r from-indigo-900 via-purple-900 to-purple-700 shadow-lg"
+          >
             <ul className="flex text-white">
               <div>
                 <li>

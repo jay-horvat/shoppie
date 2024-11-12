@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Welcome Section */}
-      <h1 className="text-3xl font-bold text-blue-600 mb-4">Welcome to the Home Page</h1>
+      <h1 className="text-3xl font-bold text-violet-600 mb-4">Start tracking your favourite products today!</h1>
       <p className="text-lg text-gray-700 max-w-md text-center">
         Shoppie allows you to track products from your favourite stores and be notified when they go on sale!
       </p>
