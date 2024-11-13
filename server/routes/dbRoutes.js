@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken'); 
 require('dotenv').config();  
+const sendMail = require('../controllers/sendMail');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -23,6 +24,7 @@ router.post("/createUser", async (req, res) => {
     } else {
       await connection.query("INSERT INTO userTable VALUES (0,?,?,?)", [user, hashedPassword, email]);
       console.log(`Created new user: ${user}`);
+      sendMail(email, 'welcome','thanks for signing up');
       res.sendStatus(201);  
     }
 
