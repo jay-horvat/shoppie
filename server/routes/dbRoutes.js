@@ -36,7 +36,7 @@ router.post("/createUser", async (req, res) => {
   }
 });
 
-// Login Route
+// Login Routes
 router.post("/login", async (req, res) => {
   const user = req.body.name;
   const password = req.body.password;
