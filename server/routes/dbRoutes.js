@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();  
 const sendMail = require('../controllers/sendMail');
 
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Create User Route

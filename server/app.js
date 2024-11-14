@@ -68,7 +68,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Start the scraping process when the server starts
-startScraping(db); 
+//startScraping(db); 
 
 // Start the server
 const port = process.env.PORT || 5001;

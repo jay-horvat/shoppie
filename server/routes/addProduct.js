@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const puppeteer = require('puppeteer');
 const { productScraper } = require('../controllers/productScraper');
+const { productApi } = require('../controllers/productAPI');
 
 // Create product route
 router.post('/addproduct', async (req, res) => {
@@ -10,7 +11,7 @@ router.post('/addproduct', async (req, res) => {
     const priceLimit = req.body.priceLimit;
 
 //Use scraper on url provided
-const result = await productScraper(url);
+const result = await productApi(url);
 
 // add product information to database
 if (result.success) {
@@ -24,7 +25,7 @@ if (result.success) {
       connection.release();
       return res.json({ message: "That item is already in your saved products!" });
     } else {
-      const formattedPrice = result.productPrice.replace(/[^0-9.]/g, '');
+      const formattedPrice = result.productPrice
       const now = new Date();
       const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
 
