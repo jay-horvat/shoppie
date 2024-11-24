@@ -3,13 +3,28 @@ import React, { useEffect, useState } from 'react';
 const ShowUser: React.FC = () => {
   const [user, setUser] = useState<string | null>(null);
 
-  // Get the user from localStorage
-  useEffect(() => {
+  const fetchUser = () => {
     const storedUser = localStorage.getItem('user');
     setUser(storedUser);
-  }, []);  // Empty dependency array means this runs once only when component called i think?
+  };
 
-  // Render the user if its there, otherwise display a fallback message
+  useEffect(() => {
+    // Fetch user when component mounts
+    fetchUser();
+
+    // Listen for the custom event
+    const handleUserUpdate = () => {
+      fetchUser();
+    };
+
+    window.addEventListener('userUpdated', handleUserUpdate);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('userUpdated', handleUserUpdate);
+    };
+  }, []);
+
   return <h3>{user ? `Logged in as: ${user}` : 'No user logged in'}</h3>;
 };
 

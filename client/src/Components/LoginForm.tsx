@@ -26,6 +26,8 @@ const LoginForm: React.FC = () => {
       localStorage.setItem('token', response.data.token);
       //set User
       localStorage.setItem('user', response.data.username);
+      
+      window.dispatchEvent(new Event('userUpdated'));
 
     } catch (error) {
       // Handle error
