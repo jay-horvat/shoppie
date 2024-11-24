@@ -68,7 +68,7 @@ const LoginForm: React.FC = () => {
       </form>
 
       {/* Display login message */}
-      {message && <p className="mt-4 text-center text-red-500">{message}</p>}
+      {message && <p className="mt-4 text-center text-green-500">{message}</p>}
 
     </div>
   );

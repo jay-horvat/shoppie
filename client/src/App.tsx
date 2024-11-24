@@ -38,14 +38,10 @@ const App: React.FC = () => {
                   </button>
                   <ul className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
                     <li>
-                      <Link to="/" className="block px-4 py-2 hover:bg-gray-100">
-                        <Logout />
-                      </Link>
+                      <Logout />
                     </li>
-                    <li>
-                      <Link to="#" className="block px-4 py-2 hover:bg-gray-100">
-                        <ShowUser />
-                      </Link>
+                    <li className="block px-4 py-2">
+                      <ShowUser />
                     </li>
                   </ul>
                 </li>
