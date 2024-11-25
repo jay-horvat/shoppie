@@ -71,4 +71,36 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//Get user details route
+  // ARoute for when front end retrieves products data for user
+  router.get("/getUserDetails", async (req, res) => {
+    console.log("Received request to /getUserDetails"); 
+    const user = req.query.user;
+    console.log(`${user} is getting fetched`)
+  
+    try {
+      //Connect to the DB  
+      const db = req.app.locals.db;
+      const connection = await db.getConnection();
+      console.log("Connected to the database"); 
+      const [userDetails] = await connection.query("SELECT user, email FROM userTable WHERE userId = ?", [user]);
+      connection.release();
+      console.log("Executed SELECT query");
+      // Check if the url is already in the table 
+      //return product rows as a json
+      if (userDetails.length === 0) {
+        console.log("no user data");
+        return res.json({message: "You have no user deets"});
+      //Ad product to the table  
+      } else {
+        console.log("User's product table returned.");
+        return res.json({userDetails});
+      }
+    
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
 module.exports = router;  

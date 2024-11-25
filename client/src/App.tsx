@@ -8,6 +8,7 @@ import Products from './Products';
 import Logout from './Components/Logout';
 import ShowUser from './Components/ShowUser';
 import SavedProducts from './SavedProducts';
+import Account from './Account';
 import logo from './assets/images/ShoppieLogov1.png';
 
 const App: React.FC = () => {
@@ -33,9 +34,9 @@ const App: React.FC = () => {
                 <li><Link to="/savedproducts" className="text-lg font-semibold hover:text-gray-200 transition duration-200">Saved Products</Link></li>
                 {/* Account Dropdown */}
                 <li className="relative group">
-                  <button className="text-lg font-semibold hover:text-gray-200 transition duration-200">
+                  <Link to="/account" className="text-lg font-semibold hover:text-gray-200 transition duration-200">
                     Account
-                  </button>
+                  </Link>
                   <ul className="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
                     <li>
                       <Logout />
@@ -56,6 +57,7 @@ const App: React.FC = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/products" element={<Products />} />
             <Route path="/savedproducts" element={<SavedProducts />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
         </main>
         <Footer />
