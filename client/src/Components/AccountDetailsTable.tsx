@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import DeleteAccount from './DeleteAccount';
 
 const AccountDetailsTable: React.FC = () => {
     const [tokenUserID, setTokenUserID] = useState<string | null>(null);
@@ -48,24 +49,28 @@ const AccountDetailsTable: React.FC = () => {
             {tokenUserID ? (
                 <>
                     {userData.length > 0 ? (
-                        <table className="min-w-full border border-gray-200 bg-gray-50 rounded-lg overflow-hidden">
-                            <thead className="bg-gray-200 text-gray-700">
-                                <tr>
-                                    <th className="px-4 py-2 text-left font-semibold">Username</th>
-                                    <th className="px-4 py-2 text-left font-semibold">Email</th>
-                                    <th className="px-4 py-2 text-left font-semibold">Edit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {userData.map((user, index) => (
-                                    <tr key={index} className="border-t hover:bg-gray-100">
-                                        <td className="px-4 py-2">{user.user}</td>
-                                        <td className="px-4 py-2">{user.email}</td>
-                                        <td className="px-4 py-2 text-blue-500 hover:text-blue-700 cursor-pointer">Edit</td>
+                        <div>
+                            <table className="min-w-full border border-gray-200 bg-gray-50 rounded-lg overflow-hidden">
+                                <thead className="bg-gray-200 text-gray-700">
+                                    <tr>
+                                        <th className="px-4 py-2 text-left font-semibold">Username</th>
+                                        <th className="px-4 py-2 text-left font-semibold">Email</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {userData.map((user, index) => (
+                                        <tr key={index} className="border-t hover:bg-gray-100">
+                                            <td className="px-4 py-2">{user.user}</td>
+                                            <td className="px-4 py-2">{user.email}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <br></br>
+      
+                            <DeleteAccount />
+
+                        </div>
                     ) : (
                         <p className="text-center text-gray-500">No user details.</p>
                     )}
