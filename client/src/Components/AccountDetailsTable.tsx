@@ -67,9 +67,7 @@ const AccountDetailsTable: React.FC = () => {
                                 </tbody>
                             </table>
                             <br></br>
-      
                             <DeleteAccount />
-
                         </div>
                     ) : (
                         <p className="text-center text-gray-500">No user details.</p>

@@ -46,7 +46,6 @@ router.post("/login", async (req, res) => {
     const connection = await db.getConnection();
     const [rows] = await connection.query("SELECT * FROM userTable WHERE user = ?", [user]);
 
-
     connection.release();
 
     if (rows.length === 0) {
@@ -76,16 +75,13 @@ router.post("/login", async (req, res) => {
   router.get("/getUserDetails", async (req, res) => {
     console.log("Received request to /getUserDetails"); 
     const user = req.query.user;
-    console.log(`${user} is getting fetched`)
   
     try {
       //Connect to the DB  
       const db = req.app.locals.db;
       const connection = await db.getConnection();
-      console.log("Connected to the database"); 
       const [userDetails] = await connection.query("SELECT user, email FROM userTable WHERE userId = ?", [user]);
       connection.release();
-      console.log("Executed SELECT query");
       // Check if the url is already in the table 
       //return product rows as a json
       if (userDetails.length === 0) {
@@ -107,18 +103,13 @@ router.post("/login", async (req, res) => {
   router.post("/deleteUser", async (req, res) => {
     console.log("Received request to /deleteUser"); 
     const user = req.body.user;
-    console.log(`${user} is getting fetched`)
   
     try {
       //Connect to the DB  
       const db = req.app.locals.db;
       const connection = await db.getConnection();
-      console.log("Connected to the database"); 
       await connection.query("DELETE FROM userTable WHERE userId = ?", [user]);
       connection.release();
-      console.log("Executed DELETE query");
-      return res.json({ message: "User deleted" });
-    
     } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");

@@ -48,16 +48,13 @@ if (result.success) {
 router.get("/getProducts", async (req, res) => {
   console.log("Received request to /getProduct"); 
   const user = req.query.user;
-  console.log(`${user} is getting fetched`)
 
   try {
     //Connect to the DB  
     const db = req.app.locals.db;
     const connection = await db.getConnection();
-    console.log("Connected to the database"); 
     const [productRows] = await connection.query("SELECT product_name, product_price, product_url, product_price_limit FROM productPriceInfo WHERE userId = ?", [user]);
     connection.release();
-    console.log("Executed SELECT query");
     // Check if the url is already in the table 
     //return product rows as a json
     if (productRows.length === 0) {

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 const DeleteAccount: React.FC = () => {
     const [tokenUserID, setTokenUserID] = useState<string | null>(null);
@@ -11,7 +12,9 @@ const DeleteAccount: React.FC = () => {
         iat: number;      
         exp: number;      
       }
-      
+     
+    const navigate = useNavigate(); 
+
     //Retrieve the token, decode and extract the userId
     useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -22,13 +25,19 @@ const DeleteAccount: React.FC = () => {
     }, []);
 
     const deleteAccount = async (event: React.FormEvent) => {
+        event.preventDefault();
+        
         if (tokenUserID) {
             console.log(`Making Attempting to delete account of ${tokenUserID}`)
             try {
                 await axios.post('http://localhost:5001/deleteUser', {
                 user: tokenUserID
                 });
-                console.log(`${tokenUserID} deleted succesfully!`);
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                window.dispatchEvent(new Event('userUpdated'));
+                navigate('/');
+                console.log('deleted succesfully!');
             } catch (error) {
                 console.error('Error:', error);
                 setError('Failed to fetch product data');
